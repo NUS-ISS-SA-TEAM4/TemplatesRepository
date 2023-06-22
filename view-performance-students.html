@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link href="grade-course-courses.html">Grade Course</link>>
+<link href="view-performance-courses.html">View Performance</link>
+<h1>View Student Performance</h1>
+
+<!--该表会展示老师所教授的某一门课中学生的list。list的属性包括学生的名字分数以及出勤率。-->
+<table>
+  <tr th:text="${course.name}"></tr><!--这里-->
+  <tr>
+    <th>Student</th>
+    <th>Score</th>
+    <th>Attendance</th>
+  </tr>
+  <tr th:each="student : ${students}"><!--这里-->
+    <td th:text="${student.name}"></td><!--这里-->
+    <td th:text="${student.score}"></td><!--这里（如果没有分数请返回0）-->
+    <td th:text="${student.attendance}"></td><!--这里-->
+  </tr>
+</table>
+
+</body>
+</html>

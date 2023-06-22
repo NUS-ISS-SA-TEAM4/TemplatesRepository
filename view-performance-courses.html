@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link href="grade-course-courses.html">Grade Course</link>>
+<link href="view-performance-courses.html">View Performance</link>
+<h1>View Student Performance</h1>
+
+<table>\\该表会展示该老师教授课程的list（其中包括该课程的名字与具体人数）
+  <tr>
+    <th>Course</th>
+    <th>Enrolment</th>
+  </tr>
+  <tr th:each="course : ${courses}"><!--这里-->
+    <td th:text="${course.name}"></td><!--这里-->
+    <td th:text="${course.Enrolmentamount}"></td><!--这里（指报名该老师该课程的人数）-->
+    <td>
+      <a th:href="@{/view-performance-students/{courseId}/{lecturerId}(courseId=${course.courseId}, lecturerId=${lecturer.id})}">
+        view
+      </a>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+...
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Grade a Course</h1>
+
+<table>\\该表会展示该老师教授课程的list（其中包括该课程的名字与具体人数）
+    <tr>
+        <th>Course</th>
+        <th>Enrolment</th>
+        <th>Grade</th>
+    </tr>
+    <tr th:each="course : ${courses}"><!--这里-->
+        <td th:text="${course.name}"></td><!--这里-->
+        <td th:text="${course.enrolmentAmount}"></td><!--这里（指报名该老师该课程的人数）-->
+        <td>
+            <a th:href="@{/grade-course-students/{courseId}/{lecturerId}(courseId=${course.courseId}, lecturerId=${lecturer.id})}">
+                view
+            </a>
+        </td><!--这里，可以跳转到对应课程界面给学生打分-->
+    </tr>
+</table>
+</body>
+</html>

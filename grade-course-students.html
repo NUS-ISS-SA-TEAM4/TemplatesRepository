@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+...
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Grade a Course</h1>
+<!--该表会展示该老师教授该课程的学生list并给他们打分-->
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Grade</th>
+    </tr>
+    <tr th:each="course : ${courses}">
+        <td th:text="${course.name}"></td>
+        <td>
+            <form th:action="@{/view-performance-students/{courseId}/{lecturerId}(courseId=${course.courseId}, lecturerId=${lecturer.id})}" method="post">
+                <input type="number" name="grade" id="grade" value="0">
+                <input type="submit" value="submit">
+            </form>
+        </td>
+        <!-- 这里，实现给学生打分的功能-->
+    </tr>
+</table>
+</body>
+</html>
